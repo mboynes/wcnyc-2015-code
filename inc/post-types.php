@@ -22,6 +22,7 @@ function wcnyc_post_types() {
 		'public' => true,
 		'taxonomies' => array( 'primary-ingredient' ),
 		'rewrite' => array( 'slug' => 'recipes/%primary-ingredient%' ),
+		'has_archive' => true,
 	) );
 }
 add_action( 'init', 'wcnyc_post_types' );
