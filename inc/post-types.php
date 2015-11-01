@@ -22,8 +22,11 @@ function wcnyc_post_types() {
 		'public' => true,
 		'taxonomies' => array( 'primary-ingredient' ),
 		'rewrite' => array( 'slug' => 'recipes/%primary-ingredient%' ),
-		'has_archive' => true,
 	) );
+
+	// The recipes 'archive'
+	add_rewrite_rule( "recipes/?$", "index.php?post_type=recipe", 'top' );
+	add_rewrite_rule( "recipes/{$GLOBALS['wp_rewrite']->pagination_base}/([0-9]{1,})/?$", 'index.php?post_type=recipe&paged=$matches[1]', 'top' );
 }
 add_action( 'init', 'wcnyc_post_types' );
 
