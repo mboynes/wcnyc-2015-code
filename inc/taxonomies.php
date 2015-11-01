@@ -22,6 +22,7 @@ function wcnyc_taxonomies() {
 			'choose_from_most_used' => __( 'Choose from most used Primary Ingredients', 'wcnyc-2015' ),
 			'menu_name'             => __( 'Primary Ingredients', 'wcnyc-2015' ),
 		),
+		'rewrite' => array( 'slug' => 'recipes' ),
 	) );
 }
 add_action( 'init', 'wcnyc_taxonomies' );

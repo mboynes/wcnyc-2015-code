@@ -21,6 +21,27 @@ function wcnyc_post_types() {
 		),
 		'public' => true,
 		'taxonomies' => array( 'primary-ingredient' ),
+		'rewrite' => array( 'slug' => 'recipes/%primary-ingredient%' ),
 	) );
 }
 add_action( 'init', 'wcnyc_post_types' );
+
+/**
+ * Add the primary ingredient to the post type links for recipes.
+ *
+ * @param  string $permalink The post's permalink.
+ * @param  object $post WP_Post object for this permalink.
+ * @return string Modified permalink.
+ */
+function wcnyc_post_type_link( $permalink, $post ) {
+	if ( 'recipe' == $post->post_type ) {
+		$primary_ingredient = get_the_terms( $post, 'primary-ingredient' );
+		if ( ! is_wp_error( $primary_ingredient ) && ! empty( $primary_ingredient ) ) {
+			$primary_ingredient = reset( $primary_ingredient );
+			$permalink = str_replace( '%primary-ingredient%', $primary_ingredient->slug, $permalink );
+		}
+	}
+
+	return $permalink;
+}
+add_filter( 'post_type_link', 'wcnyc_post_type_link', 10, 2 );
