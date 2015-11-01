@@ -4,7 +4,7 @@
  * Setup all the taxonomies for our theme.
  */
 function wcnyc_taxonomies() {
-	register_taxonomy( 'primary-ingredient', array( 'recipe' ), array(
+	register_taxonomy( 'primary-ingredient', array( 'recipe', 'post' ), array(
 		'labels' => array(
 			'name'                  => __( 'Primary Ingredients', 'wcnyc-2015' ),
 			'singular_name'         => __( 'Primary Ingredient', 'wcnyc-2015' ),
