@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Load our theme library.
+ */
+require_once( __DIR__ . '/inc/post-types.php' );
+require_once( __DIR__ . '/inc/taxonomies.php' );
+require_once( __DIR__ . '/inc/rewrites.php' );
+
+/**
  * Load the twentyfifteen stylesheet.
  */
 function twentyfifteen_parent_theme_enqueue_styles() {
